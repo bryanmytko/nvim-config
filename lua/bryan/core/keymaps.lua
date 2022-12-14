@@ -28,3 +28,6 @@ keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>")
 keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>")
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>")
+
+-- LSP
+keymap.set("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", {})
