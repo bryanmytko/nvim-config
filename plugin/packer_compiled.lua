@@ -211,6 +211,11 @@ _G.packer_plugins = {
     path = "/Users/bryan/.local/share/nvim/site/pack/packer/start/typescript.nvim",
     url = "https://github.com/jose-elias-alvarez/typescript.nvim"
   },
+  ["vim-javascript"] = {
+    loaded = true,
+    path = "/Users/bryan/.local/share/nvim/site/pack/packer/start/vim-javascript",
+    url = "https://github.com/pangloss/vim-javascript"
+  },
   ["vim-nightfly-guicolors"] = {
     loaded = true,
     path = "/Users/bryan/.local/share/nvim/site/pack/packer/start/vim-nightfly-guicolors",
