@@ -25,6 +25,7 @@ end
 return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("bluz71/vim-nightfly-guicolors")
+	use("tomasiser/vim-code-dark")
 
 	use("tpope/vim-surround")
 	use("vim-scripts/ReplaceWithRegister")
