@@ -11,7 +11,7 @@ if not cmp_nvim_lsp_status then
 end
 
 -- import typescript plugin safely
-local typescript_setup, typescript = pcall(require, "typescript")
+local typescript_setup, typescript = pcall(require, "tsserver")
 if not typescript_setup then
 	return
 end
@@ -58,6 +58,11 @@ end
 
 -- configure html server
 lspconfig["html"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+require("lspconfig").rust_analyzer.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
