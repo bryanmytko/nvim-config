@@ -16,6 +16,12 @@ if not typescript_setup then
 	return
 end
 
+-- import tailwindcss plugin safely
+local tailwindcss_setup, tailwindcss = pcall(require, "tailwindcss")
+if not tailwindcss_setup then
+	return
+end
+
 local keymap = vim.keymap -- for conciseness
 
 -- enable keybinds only for when lsp server available
@@ -82,6 +88,13 @@ lspconfig["cssls"].setup({
 })
 
 -- configure tailwindcss server
+tailwindcss.setup({
+	server = {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	},
+})
+
 lspconfig["tailwindcss"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
