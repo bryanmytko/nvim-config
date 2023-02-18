@@ -25,7 +25,7 @@ mason_lspconfig.setup({
 	ensure_installed = {
 		"cssls",
 		"html",
-		"sumneko_lua",
+		--"lua_ls",
 		"tailwindcss",
 		"tsserver",
 		"rust_analyzer",

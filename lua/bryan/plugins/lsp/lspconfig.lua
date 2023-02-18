@@ -1,6 +1,7 @@
 -- import lspconfig plugin safely
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
+	print("oh no lsp")
 	return
 end
 
@@ -10,17 +11,21 @@ if not cmp_nvim_lsp_status then
 	return
 end
 
--- import typescript plugin safely
-local typescript_setup, typescript = pcall(require, "tsserver")
-if not typescript_setup then
-	return
-end
+-- -- import typescript plugin safely
+-- local typescript_setup, typescript = pcall(require, "tsserver")
+-- if not typescript_setup then
+-- 	print("ctss sever bok")
 
--- import tailwindcss plugin safely
-local tailwindcss_setup, tailwindcss = pcall(require, "tailwindcss")
-if not tailwindcss_setup then
-	return
-end
+-- 	return
+-- end
+
+-- -- import tailwindcss plugin safely
+-- local tailwindcss_setup, tailwindcss = pcall(require, "tailwindcss")
+-- if not tailwindcss_setup then
+-- 	print("TSS not found")
+
+-- 	return
+-- end
 
 local keymap = vim.keymap -- for conciseness
 
@@ -68,36 +73,28 @@ lspconfig["html"].setup({
 	on_attach = on_attach,
 })
 
-require("lspconfig").rust_analyzer.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
--- configure typescript server with plugin
-typescript.setup({
-	server = {
-		capabilities = capabilities,
-		on_attach = on_attach,
-	},
-})
-
 -- configure css server
 lspconfig["cssls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
 
--- configure tailwindcss server
-tailwindcss.setup({
+require("lspconfig")["tailwindcss"].setup({})
+
+require('lspconfig')['rust_analyzer'].setup{
+	on_attach = on_attach,
+	flags = lsp_flags,
+	-- Server-specific settings...
+	settings = {
+		["rust-analyzer"] = {}
+	}
+}
+
+require("lspconfig")["tsserver"].setup({
 	server = {
 		capabilities = capabilities,
 		on_attach = on_attach,
 	},
-})
-
-lspconfig["tailwindcss"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
 })
 
 -- configure lua server (with special settings)
