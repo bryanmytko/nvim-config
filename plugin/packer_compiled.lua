@@ -196,6 +196,11 @@ _G.packer_plugins = {
     path = "/Users/bryan/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  sonokai = {
+    loaded = true,
+    path = "/Users/bryan/.local/share/nvim/site/pack/packer/start/sonokai",
+    url = "https://github.com/sainnhe/sonokai"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/Users/bryan/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
@@ -230,6 +235,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/bryan/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["yowish.vim"] = {
+    loaded = true,
+    path = "/Users/bryan/.local/share/nvim/site/pack/packer/start/yowish.vim",
+    url = "https://github.com/KabbAmine/yowish.vim"
   }
 }
 
