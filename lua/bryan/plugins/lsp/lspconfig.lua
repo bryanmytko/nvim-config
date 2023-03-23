@@ -81,14 +81,14 @@ lspconfig["cssls"].setup({
 
 require("lspconfig")["tailwindcss"].setup({})
 
-require('lspconfig')['rust_analyzer'].setup{
+require("lspconfig")["rust_analyzer"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	-- Server-specific settings...
 	settings = {
-		["rust-analyzer"] = {}
-	}
-}
+		["rust-analyzer"] = {},
+	},
+})
 
 require("lspconfig")["tsserver"].setup({
 	server = {
@@ -98,7 +98,7 @@ require("lspconfig")["tsserver"].setup({
 })
 
 -- configure lua server (with special settings)
-lspconfig["sumneko_lua"].setup({
+lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = { -- custom settings for lua
