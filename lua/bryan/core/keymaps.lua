@@ -31,3 +31,6 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>")
 
 -- LSP
 keymap.set("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", {})
+
+-- C
+keymap.set("n", "<leader>gcc", ":w <CR> :!gcc % -o %< && ./%< <CR>")
