@@ -66,7 +66,7 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig") -- easily configure language servers
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
 
-	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
+	-- use("jose-elias-alvarez/typescript.nvim") --   this project is archived & causing syntax highlighting issues in react components
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
 	-- formatting & linting
@@ -78,6 +78,11 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
 			require("nvim-treesitter.install").update({ with_sync = true })
+			require("nvim-treesitter.configs").setup({
+				highlight = {
+					enabled = true,
+				},
+			})
 		end,
 	})
 
