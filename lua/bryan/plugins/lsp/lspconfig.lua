@@ -11,17 +11,23 @@ if not cmp_nvim_lsp_status then
 	return
 end
 
--- import typescript plugin safely
-local typescript_setup, typescript = pcall(require, "typescript")
-if not typescript_setup then
-	print("ctss sever bok")
-	return
-end
+-- local tsserver = pcall(require, "tsserver")
+-- if not typescript then
+-- 	print("tsserver didnt load")
+-- 	return
+-- end
 
-if not typescript then
-	print("typescript not loaded")
-	return
-end
+-- import typescript plugin safely
+-- local _, typescript = pcall(require, "typescript")
+-- if not typescript_setup then
+-- 	print("ctss sever bok")
+-- 	return
+-- end
+
+-- if not typescript then
+-- 	print("typescript not loaded")
+-- 	return
+-- end
 
 -- import tailwindcss plugin safely
 -- local tailwindcss_setup, tailwindcss = pcall(require, "tailwindcss")
@@ -34,6 +40,7 @@ local keymap = vim.keymap -- for conciseness
 
 -- enable keybinds only for when lsp server available
 local on_attach = function(client, bufnr)
+	print("lsp things")
 	-- keybind options
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 	-- set keybinds
@@ -75,12 +82,12 @@ lspconfig["html"].setup({
 })
 
 -- configure typescript
-typescript.setup({
-	server = {
-		capabilities = capabilities,
-		on_attach = on_attach,
-	},
-})
+-- typescript.setup({
+-- 	server = {
+-- 		capabilities = capabilities,
+-- 		on_attach = on_attach,
+-- 	},
+-- })
 
 -- configure css server
 lspconfig["cssls"].setup({
@@ -88,9 +95,14 @@ lspconfig["cssls"].setup({
 	on_attach = on_attach,
 })
 
-require("lspconfig")["tailwindcss"].setup({})
+-- configure typescript
+lspconfig.tsserver.setup({
+	on_attach = on_attach,
+	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+	cmd = { "typescript-language-server", "--stdio" },
+})
 
-require("lspconfig")["rust_analyzer"].setup({
+lspconfig.rust_analyzer.setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	-- Server-specific settings...
@@ -98,13 +110,6 @@ require("lspconfig")["rust_analyzer"].setup({
 		["rust-analyzer"] = {},
 	},
 })
-
--- require("lspconfig")["tsserver"].setup({
--- 	server = {
--- 		capabilities = capabilities,
--- 		on_attach = on_attach,
--- 	},
--- })
 
 -- configure lua server (with special settings)
 lspconfig["lua_ls"].setup({
